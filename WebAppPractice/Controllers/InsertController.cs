@@ -18,8 +18,6 @@ namespace WebAppPractice.Controllers
 
             alphabet = alphabet.Insert(place, c.ToString());
 
-
-
             return alphabet.ToString();
 
         }

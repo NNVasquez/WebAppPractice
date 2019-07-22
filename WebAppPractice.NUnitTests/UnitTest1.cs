@@ -73,9 +73,84 @@ namespace Tests
     public class ReduceArrayTests
     {
         [Test]
-        public void ReduceArrayTest()
+        public void ReduceArrayEvenLengthTest()
         {
+            ReduceController red = new ReduceController();
 
+            int[][] answer = new int[4][]
+            {
+                new int[] {2,1,1,3},
+                new int[] {1,2,3,1},
+                new int[] {1,3,2,1},
+                new int[] {3,1,1,2}
+            };
+
+
+            Assert.AreEqual("4", red.GetReduced(answer));
+
+        }
+
+        [Test]
+        public void ReduceArrayOddTest()
+        {
+            ReduceController red2 = new ReduceController();
+
+            int[][] answer = new int[5][]
+            {
+                new int[] {2,1,1,1,3},
+                new int[] {1,2,1,3,1},
+                new int[] {1,1,2,1,1},
+                new int[] {1,3,1,2,1},
+                new int[] {3,1,1,1,2}
+            };
+            //10 vs  14
+
+
+            Assert.AreEqual("4", red2.GetReduced(answer));
+        }
+    }
+
+    [TestFixture]
+    public class InsertTests
+    {
+        [Test]
+        public void InsertTestBeginning()
+        {
+            InsertController insert = new InsertController();
+
+            string alphabet = "abcdefghijklmmnopqrstuvwxyz";
+
+            Assert.AreEqual(alphabet, insert.Get('a', "bcdefghijklmmnopqrstuvwxyz"));
+        }
+
+        [Test]
+        public void InsertTestEnd()
+        {
+            InsertController insert = new InsertController();
+
+            string alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+            Assert.AreEqual(alphabet, insert.Get('z', "abcdefghijklmnopqrstuvwxy"));
+        }
+
+        [Test]
+        public void InsertTestMiddle()
+        {
+            InsertController insert = new InsertController();
+
+            string alphabet = "abcdefghijklmmnopqrstuvwxyz";
+
+            Assert.AreEqual(alphabet, insert.Get('j', "abcdefghiklmmnopqrstuvwxyz"));
+        }
+
+        [Test]
+        public void InsertTestJumbledCase()
+        {
+            InsertController insert = new InsertController();
+
+            string alphabetCaps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            Assert.AreEqual(alphabetCaps, insert.Get('M', "ABCDEFGHIJKLNOPQRSTUVWXYZ"));
         }
     }
 }
